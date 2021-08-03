@@ -16,7 +16,7 @@ process vcfConvert {
 
     shell:
     '''
-    gunzip !{vcf}
+    gunzip -f !{vcf}
     sed 's/MN908947.3/NC_045512.2/g' !{vcfID}.vcf > !{vcfID}.converted.vcf
     '''
 }
