@@ -5,7 +5,7 @@ process vcfConvert {
     container 'anajung/pandas'
     cpus 1
     memory '1 GB'
-    publishDir params.outdir+'/snpEff_results'
+    publishDir params.outdir+'/snpEff_results', mode: 'copy'
 
     input:
     tuple path(vcf), val(vcfID)
@@ -25,7 +25,7 @@ process snpEff {
     container 'quay.io/biocontainers/snpeff:5.0--hdfd78af_1'
     cpus 1
     memory '1 GB'
-    publishDir params.outdir+'/snpEff_results'
+    publishDir params.outdir+'/snpEff_results', mode: 'copy'
 
     input:
     tuple path(converted_vcf), val(vcfID)
@@ -47,7 +47,7 @@ process snpSift {
     container 'quay.io/biocontainers/snpsift:4.3.1t--hdfd78af_3'
     cpus 1
     memory '1 GB'
-    publishDir params.outdir
+    publishDir params.outdir, mode: 'copy'
 
     input:
     tuple path(ann_vcf), val(vcfID)
